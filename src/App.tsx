@@ -1,8 +1,12 @@
-import React from "react";
-import "./App.css";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from "react";
 
-function App() {
-  return <div className="App">Hello</div>;
-}
+import { Themes } from "./types";
+
+const App = () => {
+  const [theme, setTheme] = useState<Themes>(Themes.default);
+
+  return <div className={theme}>Hello</div>;
+};
 
 export default App;
