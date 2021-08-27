@@ -2,10 +2,8 @@ import React from "react";
 
 import ReactDOM from "react-dom";
 
-import "./tailwind.output.css";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import App from "./shared/App";
 
 import "./fonts/DisposableDroidBB/Disposable-Droid-BB.ttf";
 
