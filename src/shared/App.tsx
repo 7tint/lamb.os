@@ -9,9 +9,10 @@ import { Themes } from "../types";
 import Fonts from "./Fonts";
 
 const App = () => {
-  const [theme] = useState<Themes>(Themes.default);
+  const [theme] = useState<Themes>(Themes.Default);
   const [backgroundColor] = useState<string>("teal.200");
-  const [color] = useState<string>("teal.900");
+  const [outlineColor] = useState<string>("teal.900");
+  const [textColor] = useState<string>("gray.100");
 
   const chakraTheme = extendTheme({
     fonts: {
@@ -28,20 +29,20 @@ const App = () => {
         left="0"
         w="100vw"
         h="100vh"
-        flexDirection="column"
-        justifyContent="space-between"
+        direction="column"
+        justify="space-between"
       >
         <Box
           backgroundImage={`url("/assets/${theme}/background.jpeg")`}
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
           backgroundSize="cover"
-          color={color}
+          color={outlineColor}
           h="100%"
         >
-          <AppIcons color={color} />
+          <AppIcons color={textColor} />
         </Box>
-        <Taskbar backgroundColor={backgroundColor} color={color} />
+        <Taskbar backgroundColor={backgroundColor} color={outlineColor} />
       </Flex>
     </ChakraProvider>
   );
