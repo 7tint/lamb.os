@@ -33,7 +33,9 @@ const Taskbar = ({ backgroundColor, color }: Props) => {
           fontStyle="italic"
         >
           {/* TODO: Add logo here */}
-          <Text display={["none", "block", "block", "block"]}>Lambert Liu</Text>
+          <Text display={["none", "block", "block", "block"]}>
+            Lambert&#39;s Computer
+          </Text>
         </Flex>
         <Spacer />
         <Text
