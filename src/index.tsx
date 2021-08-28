@@ -3,9 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
 import App from "./shared/App";
-
-import "./fonts/DisposableDroidBB/Disposable-Droid-BB.ttf";
 
 ReactDOM.render(
   <React.StrictMode>
