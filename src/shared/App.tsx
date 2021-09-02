@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, ChakraProvider, extendTheme, Flex } from "@chakra-ui/react";
 
-import AppIcons from "components/AppIcons";
+import AppBar from "components/AppBar";
 import Taskbar from "components/Taskbar";
 
 import { Themes } from "../types";
@@ -40,7 +40,7 @@ const App = () => {
           color={outlineColor}
           h="100%"
         >
-          <AppIcons color={textColor} />
+          <AppBar backgroundColor={backgroundColor} color={textColor} />
         </Box>
         <Taskbar backgroundColor={backgroundColor} color={outlineColor} />
       </Flex>

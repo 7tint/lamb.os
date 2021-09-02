@@ -1,21 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Flex, Wrap } from "@chakra-ui/react";
 
-import Icon from "./Icon";
+import App from "./App";
+import { Icons } from "./AppModal";
 
 type Props = {
+  backgroundColor: string;
   color: string;
 };
-
-enum Icons {
-  Computer = "Computer",
-  Portfolio = "Portfolio",
-  Calendar = "Calendar",
-  Music = "Music",
-  Messages = "Messages",
-  Trash = "Trash",
-}
 
 const IconsData = [
   {
@@ -50,8 +43,8 @@ const IconsData = [
   },
 ];
 
-const AppIcons = ({ color }: Props) => {
-  const [selectedIcon, setSelectedIcon] = React.useState<Icons | null>(null);
+const AppBar = ({ backgroundColor, color }: Props) => {
+  const [selectedIcon, setSelectedIcon] = useState<Icons | null>(null);
 
   const doesContainIcon = (name: string): boolean =>
     (IconsData.some((icon) => icon.name === name) && true) || false;
@@ -83,11 +76,13 @@ const AppIcons = ({ color }: Props) => {
         wrap="wrap"
       >
         {IconsData.map(({ name, img, type }) => (
-          <Icon
+          <App
             key={name}
+            name={name}
             img={img}
-            text={name}
+            backgroundColor={backgroundColor}
             color={color}
+            type={type}
             selected={selectedIcon === type}
             onSelect={() => onSelectIcon(type)}
           />
@@ -97,4 +92,4 @@ const AppIcons = ({ color }: Props) => {
   );
 };
 
-export default AppIcons;
+export default AppBar;
