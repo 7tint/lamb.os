@@ -35,11 +35,7 @@ const Icons = ({
         mb={1}
         id={text}
       />
-      <Text
-        fontSize={["md", "md", "md", "md", "md", "xl"]}
-        color={color}
-        id={text}
-      >
+      <Text fontSize="md" color={color} id={text}>
         {text}
       </Text>
     </Flex>

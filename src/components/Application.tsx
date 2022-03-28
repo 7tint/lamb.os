@@ -13,7 +13,7 @@ type Props = {
   onSelect: () => void;
 };
 
-const App = ({
+const Application = ({
   name,
   img,
   backgroundColor,
@@ -46,4 +46,4 @@ const App = ({
   );
 };
 
-export default App;
+export default Application;

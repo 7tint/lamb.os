@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { Flex, Wrap } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
-import App from "./App";
+import Application from "./Application";
 import { Icons } from "./AppModal";
 
 type Props = {
@@ -68,26 +68,27 @@ const AppBar = ({ backgroundColor, color }: Props) => {
       marginRight={[8, 0]}
       onClick={(e) => handleClickOutside(e)}
     >
-      <Wrap
+      <Flex
+        h={["auto", "100%"]}
         direction={["row", "column"]}
-        m={[5, 5, 5, 5, 5, 8]}
-        spacing={["16px", "16px", "24px", "24px", "24px", "48px"]}
-        align="center"
+        p={[5, 5, 5, 5, 5, 8]}
+        align={["flex-start", "center"]}
         wrap="wrap"
       >
         {IconsData.map(({ name, img, type }) => (
-          <App
-            key={name}
-            name={name}
-            img={img}
-            backgroundColor={backgroundColor}
-            color={color}
-            type={type}
-            selected={selectedIcon === type}
-            onSelect={() => onSelectIcon(type)}
-          />
+          <Box key={name} m={["8px", "8px", "12px", "12px", "12px", "24px"]}>
+            <Application
+              name={name}
+              img={img}
+              backgroundColor={backgroundColor}
+              color={color}
+              type={type}
+              selected={selectedIcon === type}
+              onSelect={() => onSelectIcon(type)}
+            />
+          </Box>
         ))}
-      </Wrap>
+      </Flex>
     </Flex>
   );
 };

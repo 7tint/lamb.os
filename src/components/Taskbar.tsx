@@ -17,6 +17,9 @@ const Taskbar = ({ backgroundColor, color }: Props) => {
 
   return (
     <Box
+      position="absolute"
+      bottom="0"
+      h="30px"
       w="100%"
       backgroundColor={backgroundColor}
       borderColor={color}

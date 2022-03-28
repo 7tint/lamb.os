@@ -38,7 +38,7 @@ const App = () => {
           backgroundRepeat="no-repeat"
           backgroundSize="cover"
           color={outlineColor}
-          h="100%"
+          h="calc(100vh - 30px)"
         >
           <AppBar backgroundColor={backgroundColor} color={textColor} />
         </Box>
