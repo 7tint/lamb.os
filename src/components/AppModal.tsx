@@ -31,7 +31,16 @@ const AppModal = ({ backgroundColor, color, name, type }: Props) => {
         top="50%"
         backgroundColor={backgroundColor}
       >
-        {name}
+        <Box border="1px solid black" height="300px" width="400px" shadow="lg">
+          <Box
+            h="100%"
+            w="100%"
+            p={5}
+            boxShadow="inset 2px 2px 2px rgba(255, 255, 255, .6), inset -2px -2px 2px rgba(0, 0, 0, .2)"
+          >
+            {name}
+          </Box>
+        </Box>
       </Box>
     </Draggable>
   );

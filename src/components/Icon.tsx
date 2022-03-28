@@ -31,7 +31,7 @@ const Icons = ({
     <Flex w="100%" direction="column" align="center" justify="center" id={text}>
       <Image
         src={img}
-        boxSize={["42px", "45px", "47px", "50px", "55px", "80px"]}
+        boxSize={["42px", "45px", "47px", "50px", "52px", "75px"]}
         mb={1}
         id={text}
       />

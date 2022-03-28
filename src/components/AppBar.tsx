@@ -71,12 +71,12 @@ const AppBar = ({ backgroundColor, color }: Props) => {
       <Flex
         h={["auto", "100%"]}
         direction={["row", "column"]}
-        p={[5, 5, 5, 5, 5, 8]}
+        p="3"
         align={["flex-start", "center"]}
         wrap="wrap"
       >
         {IconsData.map(({ name, img, type }) => (
-          <Box key={name} m={["8px", "8px", "12px", "12px", "12px", "24px"]}>
+          <Box key={name} m={["6px", "6px", "8px", "8px", "10px", "12px"]}>
             <Application
               name={name}
               img={img}
