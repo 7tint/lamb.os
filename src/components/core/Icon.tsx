@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { Flex, Image, Text, WrapItem } from "@chakra-ui/react";
 
-type Props = {
+type IconProps = {
   img: string;
   text: string;
   color: string;
@@ -18,11 +18,10 @@ const Icons = ({
   selected,
   onSelect,
   onDoubleClick,
-}: Props) => (
+}: IconProps): ReactElement => (
   <WrapItem
-    w={["66px", "69px", "71px", "74px", "79px", "94px"]}
     p={1}
-    justify="center"
+    justifyContent="center"
     onClick={onSelect}
     onDoubleClick={onDoubleClick}
     background={selected ? "rgba(0, 0, 0, 0.6)" : "transparent"}
@@ -31,7 +30,7 @@ const Icons = ({
     <Flex w="100%" direction="column" align="center" justify="center" id={text}>
       <Image
         src={img}
-        boxSize={["42px", "45px", "47px", "50px", "52px", "75px"]}
+        boxSize={["42px", "45px", "47px", "50px", "52px", "55px"]}
         mb={1}
         id={text}
       />

@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import moment, { Moment } from "moment";
 
-type Props = {
+type TaskbarProps = {
   backgroundColor: string;
   color: string;
 };
 
-const Taskbar = ({ backgroundColor, color }: Props) => {
+const Taskbar = ({ backgroundColor, color }: TaskbarProps): ReactElement => {
   const [time, setTime] = useState<Moment>(moment());
 
   setInterval(() => {
@@ -55,7 +55,7 @@ const Taskbar = ({ backgroundColor, color }: Props) => {
           borderLeft="1px solid"
           fontStyle="italic"
         >
-          {time.format("dddd, MMM DD YYYY")}
+          {time.format("ddd DD MMM YYYY")}
         </Text>
       </Flex>
     </Box>

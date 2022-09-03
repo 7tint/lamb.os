@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { Global } from "@emotion/react";
 
-const Fonts = () => (
+const Fonts = (): ReactElement => (
   <Global
     styles={`
       @font-face {

@@ -1,27 +1,33 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 import AppModal, { Icons } from "./AppModal";
 import Icon from "./Icon";
 
-type Props = {
-  name: string;
-  img: string;
+type ApplicationProps = {
   backgroundColor: string;
   color: string;
-  selected: boolean;
-  type: Icons;
+  component: ReactElement;
+  img: string;
+  name: string;
   onSelect: () => void;
+  selected: boolean;
+  position: { x: string; y: string };
+  type: Icons;
+  zIndex: number;
 };
 
 const Application = ({
-  name,
-  img,
   backgroundColor,
   color,
-  selected,
-  type,
+  component,
+  img,
+  name,
   onSelect,
-}: Props) => {
+  selected,
+  position,
+  type,
+  zIndex,
+}: ApplicationProps): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -38,8 +44,12 @@ const Application = ({
         <AppModal
           backgroundColor={backgroundColor}
           color={color}
+          content={component}
           name={name}
+          position={position}
           type={type}
+          zIndex={zIndex}
+          onModalClose={() => setIsOpen(false)}
         />
       )}
     </>

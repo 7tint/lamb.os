@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 import { Box, ChakraProvider, extendTheme, Flex } from "@chakra-ui/react";
 
-import AppBar from "components/AppBar";
-import Taskbar from "components/Taskbar";
+import AppBar from "components/core/AppBar";
+import Taskbar from "components/core/Taskbar";
 
 import { Themes } from "../types";
 import Fonts from "./Fonts";
 
-const App = () => {
+const App = (): ReactElement => {
   const [theme] = useState<Themes>(Themes.Default);
-  const [backgroundColor] = useState<string>("teal.200");
+  const [backgroundColor] = useState<string>("teal.100");
   const [outlineColor] = useState<string>("teal.900");
   const [textColor] = useState<string>("gray.100");
 
