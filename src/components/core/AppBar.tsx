@@ -40,7 +40,7 @@ export const Applications = [
     img: "/assets/calendar.png",
     type: Icons.Calendar,
     component: <Calendar />,
-    position: { x: "20%", y: "36%" },
+    position: { x: "20%", y: "25%" },
   },
   {
     id: 3,
@@ -56,7 +56,7 @@ export const Applications = [
     img: "/assets/message.png",
     type: Icons.Messages,
     component: <Messages />,
-    position: { x: "45%", y: "12%" },
+    position: { x: "34%", y: "5%" },
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ export const Applications = [
     img: "/assets/trashcan.png",
     type: Icons.Trash,
     component: <Trash />,
-    position: { x: "50%", y: "23%" },
+    position: { x: "60%", y: "23%" },
   },
 ];
 
@@ -72,26 +72,19 @@ const AppBar = ({ backgroundColor, color }: AppBarProps): ReactElement => {
   const [selectedApp, setSelectedApp] = useState<number | null>(null);
   const [appsZIndex, setAppsZIndex] = useState<number[]>([]);
 
-  const doesContainIcon = (name: string): boolean =>
-    (Applications.some((app) => app.name === name) && true) || false;
-
-  const handleClickOutside = (event: React.MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (!doesContainIcon(target.id)) {
-      setSelectedApp(null);
-    }
-  };
-
   const onSelectApp = (id: number) => {
-    setSelectedApp(id);
     if (!appsZIndex.includes(id)) {
-      setAppsZIndex([id, ...appsZIndex]);
+      setAppsZIndex([...appsZIndex, id]);
     } else {
       // Remove the id from the array and add it to the front
       const newAppsZIndex = appsZIndex.filter((appId) => appId !== id);
-      setAppsZIndex([id, ...newAppsZIndex]);
+      setAppsZIndex([...newAppsZIndex, id]);
     }
-    console.log(appsZIndex);
+  };
+
+  const onSelectAppIcon = (id: number) => {
+    setSelectedApp(id);
+    onSelectApp(id);
   };
 
   return (
@@ -100,7 +93,6 @@ const AppBar = ({ backgroundColor, color }: AppBarProps): ReactElement => {
       justify="flex-start"
       align={["flex-end", "flex-start"]}
       marginRight={[8, 0]}
-      onClick={(e) => handleClickOutside(e)}
     >
       <Flex
         h={["auto", "100%"]}
@@ -117,11 +109,13 @@ const AppBar = ({ backgroundColor, color }: AppBarProps): ReactElement => {
               component={component}
               img={img}
               name={name}
-              onSelect={() => onSelectApp(id)}
-              selected={selectedApp === id}
               position={position}
+              selected={selectedApp === id}
               type={type}
               zIndex={appsZIndex.indexOf(id)}
+              onSelectApp={() => onSelectApp(id)}
+              onSelectAppIcon={() => onSelectAppIcon(id)}
+              onDeselectAppIcons={() => setSelectedApp(null)}
             />
           </Box>
         ))}

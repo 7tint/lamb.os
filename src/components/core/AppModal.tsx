@@ -21,6 +21,7 @@ type AppModalProps = {
   position: { x: string; y: string };
   type: Icons;
   zIndex: number;
+  onSelect: () => void;
   onModalClose: () => void;
 };
 
@@ -33,12 +34,18 @@ const AppModal = ({
   position,
   type,
   zIndex,
+  onSelect,
   onModalClose,
 }: AppModalProps): ReactElement => {
   const nodeRef = React.useRef(null);
 
   return (
-    <Draggable handle=".header" nodeRef={nodeRef} grid={[5, 5]}>
+    <Draggable
+      handle=".header"
+      nodeRef={nodeRef}
+      grid={[5, 5]}
+      onStart={onSelect}
+    >
       <Box
         ref={nodeRef}
         position="absolute"
@@ -47,6 +54,7 @@ const AppModal = ({
         backgroundColor={backgroundColor}
         className="no-cursor"
         zIndex={zIndex}
+        onClick={onSelect}
       >
         <Box
           border="1px solid black"

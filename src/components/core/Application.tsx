@@ -9,11 +9,13 @@ type ApplicationProps = {
   component: ReactElement;
   img: string;
   name: string;
-  onSelect: () => void;
-  selected: boolean;
   position: { x: string; y: string };
+  selected: boolean;
   type: Icons;
   zIndex: number;
+  onSelectApp: () => void;
+  onSelectAppIcon: () => void;
+  onDeselectAppIcons: () => void;
 };
 
 const Application = ({
@@ -22,11 +24,13 @@ const Application = ({
   component,
   img,
   name,
-  onSelect,
-  selected,
   position,
+  selected,
   type,
   zIndex,
+  onSelectApp,
+  onSelectAppIcon,
+  onDeselectAppIcons,
 }: ApplicationProps): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -37,8 +41,11 @@ const Application = ({
         text={name}
         color={color}
         selected={selected}
-        onSelect={onSelect}
-        onDoubleClick={() => setIsOpen(true)}
+        onOpenApp={() => {
+          onDeselectAppIcons();
+          setIsOpen(true);
+        }}
+        onSelect={onSelectAppIcon}
       />
       {isOpen && (
         <AppModal
@@ -49,6 +56,7 @@ const Application = ({
           position={position}
           type={type}
           zIndex={zIndex}
+          onSelect={onSelectApp}
           onModalClose={() => setIsOpen(false)}
         />
       )}
