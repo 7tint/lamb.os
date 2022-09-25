@@ -1,17 +1,17 @@
 import React, { ReactElement, useState } from "react";
 
-import AppModal, { Icons } from "./AppModal";
-import Icon from "./Icon";
+import { Themes, ThemeStyles } from "types";
+
+import AppModal from "./AppModal";
+import Icon, { IconType } from "./Icon";
 
 type ApplicationProps = {
-  backgroundColor: string;
-  color: string;
-  component: ReactElement;
   img: string;
   name: string;
   position: { x: string; y: string };
   selected: boolean;
-  type: Icons;
+  theme: Themes;
+  type: IconType;
   zIndex: number;
   onSelectApp: () => void;
   onSelectAppIcon: () => void;
@@ -19,13 +19,11 @@ type ApplicationProps = {
 };
 
 const Application = ({
-  backgroundColor,
-  color,
-  component,
   img,
   name,
   position,
   selected,
+  theme,
   type,
   zIndex,
   onSelectApp,
@@ -39,7 +37,7 @@ const Application = ({
         key={name}
         img={img}
         text={name}
-        color={color}
+        color={ThemeStyles[theme].text}
         selected={selected}
         onOpenApp={() => {
           onDeselectAppIcons();
@@ -49,11 +47,9 @@ const Application = ({
       />
       {isOpen && (
         <AppModal
-          backgroundColor={backgroundColor}
-          color={color}
-          content={component}
           name={name}
           position={position}
+          theme={theme}
           type={type}
           zIndex={zIndex}
           onSelect={onSelectApp}

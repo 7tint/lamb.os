@@ -5,14 +5,11 @@ import { Box, ChakraProvider, extendTheme, Flex } from "@chakra-ui/react";
 import AppBar from "components/core/AppBar";
 import Taskbar from "components/core/Taskbar";
 
-import { Themes } from "../types";
+import { Themes, ThemeStyles } from "../types";
 import Fonts from "./Fonts";
 
 const App = (): ReactElement => {
   const [theme] = useState<Themes>(Themes.Default);
-  const [backgroundColor] = useState<string>("teal.100");
-  const [outlineColor] = useState<string>("teal.900");
-  const [textColor] = useState<string>("gray.100");
 
   const chakraTheme = extendTheme({
     fonts: {
@@ -37,12 +34,12 @@ const App = (): ReactElement => {
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
           backgroundSize="cover"
-          color={outlineColor}
+          color={ThemeStyles[theme].outline}
           h="calc(100vh - 30px)"
         >
-          <AppBar backgroundColor={backgroundColor} color={textColor} />
+          <AppBar theme={theme} />
         </Box>
-        <Taskbar backgroundColor={backgroundColor} color={outlineColor} />
+        <Taskbar theme={theme} />
       </Flex>
     </ChakraProvider>
   );

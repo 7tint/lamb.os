@@ -2,6 +2,15 @@ import React, { ReactElement } from "react";
 
 import { Flex, Image, Text, WrapItem } from "@chakra-ui/react";
 
+export enum IconType {
+  Computer = "Computer",
+  Portfolio = "Portfolio",
+  Calendar = "Calendar",
+  Music = "Music",
+  Messages = "Messages",
+  Trash = "Trash",
+}
+
 type IconProps = {
   img: string;
   text: string;
@@ -11,7 +20,7 @@ type IconProps = {
   onSelect: () => void;
 };
 
-const Icons = ({
+const Icon = ({
   img,
   text,
   color,
@@ -47,4 +56,4 @@ const Icons = ({
   </WrapItem>
 );
 
-export default Icons;
+export default Icon;

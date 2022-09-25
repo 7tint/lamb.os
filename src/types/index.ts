@@ -2,3 +2,13 @@
 export enum Themes {
   Default = "default",
 }
+
+export const ThemeStyles = {
+  [Themes.Default]: {
+    background: "teal.100",
+    outline: "teal.900",
+    player: "red.300",
+    text: "gray.100",
+    app: "red.100",
+  },
+};

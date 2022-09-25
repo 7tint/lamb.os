@@ -3,12 +3,13 @@ import React, { ReactElement, useState } from "react";
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import moment, { Moment } from "moment";
 
+import { Themes, ThemeStyles } from "types";
+
 type TaskbarProps = {
-  backgroundColor: string;
-  color: string;
+  theme: Themes;
 };
 
-const Taskbar = ({ backgroundColor, color }: TaskbarProps): ReactElement => {
+const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
   const [time, setTime] = useState<Moment>(moment());
 
   setInterval(() => {
@@ -21,17 +22,17 @@ const Taskbar = ({ backgroundColor, color }: TaskbarProps): ReactElement => {
       bottom="0"
       h="30px"
       w="100%"
-      backgroundColor={backgroundColor}
-      borderColor={color}
+      backgroundColor={ThemeStyles[theme].background}
+      borderColor={ThemeStyles[theme].outline}
       borderTop="1px solid"
-      color={color}
+      color={ThemeStyles[theme].outline}
       fontWeight="700"
       fontSize={["lg", "xl"]}
     >
       <Flex>
         <Flex
           px={[2, 3]}
-          borderColor={color}
+          borderColor={ThemeStyles[theme].outline}
           borderRight="1px solid"
           fontStyle="italic"
         >
@@ -43,7 +44,7 @@ const Taskbar = ({ backgroundColor, color }: TaskbarProps): ReactElement => {
         <Spacer />
         <Text
           px={[2, 3]}
-          borderColor={color}
+          borderColor={ThemeStyles[theme].outline}
           borderLeft="1px solid"
           fontStyle="italic"
         >
@@ -51,7 +52,7 @@ const Taskbar = ({ backgroundColor, color }: TaskbarProps): ReactElement => {
         </Text>
         <Text
           px={[2, 3]}
-          borderColor={color}
+          borderColor={ThemeStyles[theme].outline}
           borderLeft="1px solid"
           fontStyle="italic"
         >

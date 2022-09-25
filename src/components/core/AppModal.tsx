@@ -1,43 +1,71 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useRef } from "react";
 
-import { Box, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import Draggable from "react-draggable";
 import "./Application.css";
 
-export enum Icons {
-  Computer = "Computer",
-  Portfolio = "Portfolio",
-  Calendar = "Calendar",
-  Music = "Music",
-  Messages = "Messages",
-  Trash = "Trash",
-}
+import Calendar from "components/apps/Calendar";
+import Computer from "components/apps/Computer";
+import Messages from "components/apps/Messages";
+import Music from "components/apps/Music";
+import Portfolio from "components/apps/Portfolio";
+import Trash from "components/apps/Trash";
+import { Themes, ThemeStyles } from "types";
+
+import { IconType } from "./Icon";
+
+type AppContentProps = {
+  type: IconType;
+  theme: Themes;
+};
 
 type AppModalProps = {
-  backgroundColor: string;
-  color: string;
-  content: ReactElement;
   name: string;
   position: { x: string; y: string };
-  type: Icons;
+  theme: Themes;
+  type: IconType;
   zIndex: number;
   onSelect: () => void;
   onModalClose: () => void;
 };
 
+const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
+  switch (type) {
+    case IconType.Computer:
+      return <Computer />;
+    case IconType.Portfolio:
+      return <Portfolio />;
+    case IconType.Calendar:
+      return <Calendar />;
+    case IconType.Music:
+      return <Music theme={theme} />;
+    case IconType.Messages:
+      return <Messages />;
+    case IconType.Trash:
+      return <Trash />;
+    default:
+      return <></>;
+  }
+};
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const AppModal = ({
-  backgroundColor,
-  color,
-  content,
   name,
   position,
+  theme,
   type,
   zIndex,
   onSelect,
   onModalClose,
 }: AppModalProps): ReactElement => {
-  const nodeRef = React.useRef(null);
+  const nodeRef = useRef(null);
 
   return (
     <Draggable
@@ -51,7 +79,7 @@ const AppModal = ({
         position="absolute"
         left={position.x}
         top={position.y}
-        backgroundColor={backgroundColor}
+        backgroundColor={ThemeStyles[theme].app}
         className="no-cursor"
         zIndex={zIndex}
         onClick={onSelect}
@@ -84,18 +112,26 @@ const AppModal = ({
                   <ListItem className="header-line" />
                 </UnorderedList>
               </Box>
-              <Box
-                mx={1}
+              <Button
+                w="20px"
+                h="auto"
+                minWidth={0}
+                m={0}
+                p={0}
                 className="header-button"
                 fontSize="sm"
+                variant="unstyled"
                 onClick={() => {
+                  onModalClose();
+                }}
+                onTouchEnd={() => {
                   onModalClose();
                 }}
               >
                 x
-              </Box>
+              </Button>
             </Flex>
-            {content}
+            <AppContent type={type} theme={theme} />
           </Box>
         </Box>
       </Box>

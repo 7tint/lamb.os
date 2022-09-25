@@ -2,19 +2,13 @@ import React, { ReactElement, useState } from "react";
 
 import { Box, Flex } from "@chakra-ui/react";
 
-import Calendar from "components/apps/Calendar";
-import Computer from "components/apps/Computer";
-import Messages from "components/apps/Messages";
-import Music from "components/apps/Music";
-import Portfolio from "components/apps/Portfolio";
-import Trash from "components/apps/Trash";
+import { Themes } from "types";
 
 import Application from "./Application";
-import { Icons } from "./AppModal";
+import { IconType } from "./Icon";
 
 type AppBarProps = {
-  backgroundColor: string;
-  color: string;
+  theme: Themes;
 };
 
 export const Applications = [
@@ -22,53 +16,47 @@ export const Applications = [
     id: 0,
     name: "Computer",
     img: "/assets/computer.png",
-    type: Icons.Computer,
-    component: <Computer />,
+    type: IconType.Computer,
     position: { x: "10%", y: "10%" },
   },
   {
     id: 1,
     name: "Portfolio",
     img: "/assets/folder.png",
-    type: Icons.Portfolio,
-    component: <Portfolio />,
+    type: IconType.Portfolio,
     position: { x: "30%", y: "45%" },
   },
   {
     id: 2,
     name: "Calendar",
     img: "/assets/calendar.png",
-    type: Icons.Calendar,
-    component: <Calendar />,
+    type: IconType.Calendar,
     position: { x: "20%", y: "25%" },
   },
   {
     id: 3,
     name: "Music",
     img: "/assets/soundcloud.png",
-    type: Icons.Music,
-    component: <Music />,
+    type: IconType.Music,
     position: { x: "45%", y: "50%" },
   },
   {
     id: 4,
     name: "Messages",
     img: "/assets/message.png",
-    type: Icons.Messages,
-    component: <Messages />,
+    type: IconType.Messages,
     position: { x: "34%", y: "5%" },
   },
   {
     id: 5,
     name: "Trash",
     img: "/assets/trashcan.png",
-    type: Icons.Trash,
-    component: <Trash />,
+    type: IconType.Trash,
     position: { x: "60%", y: "23%" },
   },
 ];
 
-const AppBar = ({ backgroundColor, color }: AppBarProps): ReactElement => {
+const AppBar = ({ theme }: AppBarProps): ReactElement => {
   const [selectedApp, setSelectedApp] = useState<number | null>(null);
   const [appsZIndex, setAppsZIndex] = useState<number[]>([]);
 
@@ -101,16 +89,14 @@ const AppBar = ({ backgroundColor, color }: AppBarProps): ReactElement => {
         align={["flex-start", "center"]}
         wrap="wrap"
       >
-        {Applications.map(({ id, name, img, type, component, position }) => (
+        {Applications.map(({ id, name, img, type, position }) => (
           <Box key={name} m={["6px", "6px", "8px", "8px", "10px", "12px"]}>
             <Application
-              backgroundColor={backgroundColor}
-              color={color}
-              component={component}
               img={img}
               name={name}
               position={position}
               selected={selectedApp === id}
+              theme={theme}
               type={type}
               zIndex={appsZIndex.indexOf(id)}
               onSelectApp={() => onSelectApp(id)}
