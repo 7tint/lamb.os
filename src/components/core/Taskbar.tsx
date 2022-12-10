@@ -37,9 +37,7 @@ const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
           fontStyle="italic"
         >
           {/* TODO: Add logo here */}
-          <Text display={["none", "block", "block", "block"]}>
-            Lambert&#39;s Computer
-          </Text>
+          <Text display={["none", "block", "block", "block"]}>Lambo</Text>
         </Flex>
         <Spacer />
         <Text
