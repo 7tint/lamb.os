@@ -36,7 +36,7 @@ type AppModalProps = {
   onModalClose: () => void;
 };
 
-const AppContent = ({ type }: AppContentProps): ReactElement => {
+const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
   switch (type) {
     case IconType.Computer:
       return <Computer />;
@@ -45,7 +45,7 @@ const AppContent = ({ type }: AppContentProps): ReactElement => {
     case IconType.Calendar:
       return <Calendar />;
     case IconType.Music:
-      return <Music />;
+      return <Music theme={theme} />;
     case IconType.Messages:
       return <Messages />;
     case IconType.Trash:

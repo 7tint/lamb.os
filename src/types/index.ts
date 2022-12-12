@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/prefer-default-export
 export enum Themes {
-  Default = "default",
+  Default = 0,
 }
 
 export const ThemeStyles = {
