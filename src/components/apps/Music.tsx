@@ -25,59 +25,47 @@ const Music = ({ theme }: MusicProps): ReactElement => {
   const [songs, setSongs] = useState<SongInfo[]>([]);
   const [trackProgress, setTrackProgress] = useState(0);
   const [trackDuration, setTrackDuration] = useState(0);
-  const audioRef = useRef<HTMLAudioElement>();
+  const audioRef = useRef<HTMLAudioElement>(new Audio());
 
   useEffect(() => {
-    audioRef.current = new Audio();
-  });
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
-      audioRef.current.load();
-      audioRef.current.play();
-      setTrackProgress(0);
-      setTrackDuration(audioRef.current.duration);
-    }
+    audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
+    setIsPlaying(true);
+    setTrackProgress(0);
+    setTrackDuration(audioRef.current.duration);
+    const currentAudioRef = audioRef.current;
+    return () => {
+      currentAudioRef.pause();
+    };
   }, [playlistId, songId]);
 
   useEffect(() => {
     setPlaylistId(theme);
+    (async () => {
+      const res = await getApi(`/playlists/${theme}`);
+      setSongs(res as SongInfo[]);
+    })();
   }, [theme]);
 
   useEffect(() => {
-    (async () => {
-      const res = await getApi(`/playlists/${playlistId}`);
-      setSongs(res as SongInfo[]);
-    })();
-  }, [playlistId]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.play();
-      } else {
-        audioRef.current.pause();
-      }
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, songId]);
 
   const prevTrack = () => {
-    if (audioRef.current) {
-      if (audioRef.current.currentTime > 3) {
-        audioRef.current.currentTime = 0;
-      } else {
-        const prevSongId = songId - 1 < 0 ? songs.length - 1 : songId - 1;
-        setSongId(prevSongId);
-      }
+    if (audioRef.current.currentTime > 3) {
+      audioRef.current.currentTime = 0;
+    } else {
+      const prevSongId = songId - 1 < 0 ? songs.length - 1 : songId - 1;
+      setSongId(prevSongId);
     }
   };
 
   const nextTrack = () => {
-    if (audioRef.current) {
-      const nextSongId = songId + 1 >= songs.length ? 0 : songId + 1;
-      setSongId(nextSongId);
-    }
+    const nextSongId = songId + 1 >= songs.length ? 0 : songId + 1;
+    setSongId(nextSongId);
   };
 
   return (
