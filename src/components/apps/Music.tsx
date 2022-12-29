@@ -2,6 +2,7 @@
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 
 import { Box, Button, Text } from "@chakra-ui/react";
+import moment from "moment";
 
 import { getApi } from "api/common";
 import { Themes } from "types";
@@ -27,11 +28,14 @@ const Music = ({ theme }: MusicProps): ReactElement => {
   const [trackDuration, setTrackDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(new Audio());
 
+  audioRef.current.onloadedmetadata = () => {
+    setTrackProgress(0);
+    setTrackDuration(audioRef.current.duration);
+  };
+
   useEffect(() => {
     audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
     setIsPlaying(true);
-    setTrackProgress(0);
-    setTrackDuration(audioRef.current.duration);
     const currentAudioRef = audioRef.current;
     return () => {
       currentAudioRef.pause();
@@ -53,6 +57,15 @@ const Music = ({ theme }: MusicProps): ReactElement => {
       audioRef.current.pause();
     }
   }, [isPlaying, songId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTrackProgress(audioRef.current.currentTime);
+    }, 500);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [trackDuration]);
 
   const prevTrack = () => {
     if (audioRef.current.currentTime > 3) {
@@ -80,7 +93,13 @@ const Music = ({ theme }: MusicProps): ReactElement => {
         )}
       </Text>
       <Text>
-        {trackProgress} / {trackDuration}
+        {moment
+          .utc(moment.duration(trackProgress, "seconds").as("milliseconds"))
+          .format("m:ss")}{" "}
+        /{" "}
+        {moment
+          .utc(moment.duration(trackDuration, "seconds").as("milliseconds"))
+          .format("m:ss")}
       </Text>
       <Button onClick={prevTrack}>Prev</Button>
       <Button onClick={() => setIsPlaying(!isPlaying)}>
