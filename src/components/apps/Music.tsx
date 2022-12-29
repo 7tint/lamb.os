@@ -28,11 +28,6 @@ const Music = ({ theme }: MusicProps): ReactElement => {
   const [trackDuration, setTrackDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(new Audio());
 
-  audioRef.current.onloadedmetadata = () => {
-    setTrackProgress(0);
-    setTrackDuration(audioRef.current.duration);
-  };
-
   useEffect(() => {
     audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
     setIsPlaying(true);
@@ -79,6 +74,15 @@ const Music = ({ theme }: MusicProps): ReactElement => {
   const nextTrack = () => {
     const nextSongId = songId + 1 >= songs.length ? 0 : songId + 1;
     setSongId(nextSongId);
+  };
+
+  audioRef.current.onloadedmetadata = () => {
+    setTrackProgress(0);
+    setTrackDuration(audioRef.current.duration);
+  };
+
+  audioRef.current.onended = () => {
+    nextTrack();
   };
 
   return (
