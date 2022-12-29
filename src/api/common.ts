@@ -3,7 +3,6 @@ import { SERVER_URL } from "utils/secrets";
 const url = SERVER_URL;
 
 export const getApi = async (path: string): Promise<unknown> => {
-  console.log(url + path);
   const res = await fetch(url + path, {
     method: "GET",
   });
@@ -12,7 +11,7 @@ export const getApi = async (path: string): Promise<unknown> => {
     throw Error(res.statusText);
   }
 
-  return res;
+  return res.json();
 };
 
 export const postApi = async (
@@ -28,7 +27,7 @@ export const postApi = async (
     throw Error(res.statusText);
   }
 
-  return res;
+  return res.json();
 };
 
 export const putApi = async (path: string, data: unknown): Promise<unknown> => {
@@ -41,7 +40,7 @@ export const putApi = async (path: string, data: unknown): Promise<unknown> => {
     throw Error(res.statusText);
   }
 
-  return res;
+  return res.json();
 };
 
 export const deleteApi = async (path: string): Promise<unknown> => {
@@ -53,5 +52,5 @@ export const deleteApi = async (path: string): Promise<unknown> => {
     throw Error(res.statusText);
   }
 
-  return res;
+  return res.json();
 };
