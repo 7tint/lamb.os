@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import moment, { Moment } from "moment";
@@ -12,9 +12,14 @@ type TaskbarProps = {
 const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
   const [time, setTime] = useState<Moment>(moment());
 
-  setInterval(() => {
-    setTime(moment());
-  }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(moment());
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  });
 
   return (
     <Box
