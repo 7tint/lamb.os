@@ -1,0 +1,88 @@
+.platter {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 50px;
+  top: 50px;
+  border-radius: 50%;
+  border: solid 16px lightgray;
+}
+
+.record-outer {
+  position: absolute;
+  width: 184px;
+  height: 184px;
+  left: 58px;
+  top: 58px;
+  border-radius: 50%;
+  background-color: #181312;
+  box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.record-outer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-radial-gradient(circle, darkkhaki, darkkhaki, 1px, transparent 1px, transparent 5px);
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.record-outer::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(transparent 0deg 10deg,
+          rgba(255, 255, 255, 0.1) 40deg 45deg,
+          transparent 75deg 190deg,
+          rgba(255, 255, 255, 0.1) 220deg 225deg,
+          transparent 255deg 360deg);
+}
+
+.record-inner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 110px;
+  top: 110px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.record-image {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 115px;
+  top: 115px;
+  border-radius: 50%;
+  background-image: url(/public/assets/0/vinyl.jpeg);
+  background-size: cover;
+}
+
+.record-ring {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: 146px;
+  top: 146px;
+  border-radius: 50%;
+  background-color: darkgray;
+  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.3), inset 1px -1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes play  {
+  to {transform: rotate(360deg);}
+}
+
+.record-image, .record-outer {
+  animation: play 3s linear infinite .3s;
+}

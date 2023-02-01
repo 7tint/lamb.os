@@ -8,6 +8,8 @@ import { getApi } from "api/common";
 import { Themes } from "types";
 import { SERVER_URL } from "utils/secrets";
 
+import Vinyl from "./music/Vinyl";
+
 type MusicProps = {
   theme: Themes;
 };
@@ -87,7 +89,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
 
   return (
     <Box>
-      <Text>
+      {/* <Text>
         {songs.length > 0 ? (
           <>
             {songs[songId].song} by {songs[songId].artist}
@@ -109,7 +111,8 @@ const Music = ({ theme }: MusicProps): ReactElement => {
       <Button onClick={() => setIsPlaying(!isPlaying)}>
         {isPlaying ? "Pause" : "Play"}
       </Button>
-      <Button onClick={nextTrack}>Next</Button>
+      <Button onClick={nextTrack}>Next</Button> */}
+      <Vinyl />
     </Box>
   );
 };

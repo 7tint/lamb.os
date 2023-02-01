@@ -100,6 +100,7 @@ const AppModal = ({
             <Flex
               className="header cursor"
               px={1}
+              pt={1}
               flexDirection="row"
               alignItems="center"
             >
@@ -107,7 +108,7 @@ const AppModal = ({
                 {name}
               </Text>
               <Box flex="1" mx={1}>
-                <UnorderedList marginInline={0}>
+                <UnorderedList marginInline={0} pt={0.5}>
                   <ListItem className="header-line" />
                   <ListItem className="header-line" />
                 </UnorderedList>
