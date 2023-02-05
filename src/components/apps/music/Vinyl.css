@@ -1,21 +1,15 @@
-.platter {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  left: 50px;
-  top: 50px;
-  border-radius: 50%;
-  border: solid 16px lightgray;
+.record-player {
+  position: relative;
 }
 
 .record-outer {
   position: absolute;
   width: 184px;
   height: 184px;
-  left: 58px;
-  top: 58px;
+  left: 0px;
+  top: 0px;
   border-radius: 50%;
-  background-color: #181312;
+  background-color: #1f1f1f;
   box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.3);
 }
 
@@ -51,8 +45,8 @@
   position: absolute;
   width: 80px;
   height: 80px;
-  left: 110px;
-  top: 110px;
+  left: 52px;
+  top: 52px;
   border-radius: 50%;
   background-color: black;
 }
@@ -61,8 +55,8 @@
   position: absolute;
   width: 70px;
   height: 70px;
-  left: 115px;
-  top: 115px;
+  left: 57px;
+  top: 57px;
   border-radius: 50%;
   background-image: url(/public/assets/0/vinyl.jpeg);
   background-size: cover;
@@ -72,8 +66,8 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  left: 146px;
-  top: 146px;
+  left: 88px;
+  top: 88px;
   border-radius: 50%;
   background-color: darkgray;
   box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.3), inset 1px -1px 3px rgba(0, 0, 0, 0.3);
@@ -85,4 +79,59 @@
 
 .record-image, .record-outer {
   animation: play 3s linear infinite .3s;
+}
+
+.arm-base {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 185px;
+  top: 5px;
+  background: #1f1f1f;
+  border-radius: 50%;
+  box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+.pivot-base {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 190px;
+  top: 10px;
+  border-radius: 50%;
+  background: lightgray;
+}
+
+.pivot-mech {
+  position: absolute;
+  width: 6px;
+  height: 15px;
+  left: 200px;
+  top: 9px;
+  border-radius: 15px 15px 30px 30px;
+  background: white;
+  transform: rotate(-38deg);
+  transform-origin: bottom left;
+}
+
+.tone-arm {
+  position: absolute;
+  width: 6px;
+  height: 130px;
+  left: 197px;
+  top: 12px;
+  background: darkgray;
+  box-shadow: -1px 1px 7px rgba(0, 0, 0, 0.2);
+}
+
+.headshell {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  left: 195px;
+  top: 140px;
+  background: #1f1f1f;
+  transform-origin: bottom;
+  border-radius: 4px 4px 1px 1px;
+  box-shadow: -1px 1px 7px rgba(0, 0, 0, 0.2);
 }

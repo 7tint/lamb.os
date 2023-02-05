@@ -5,9 +5,8 @@ import { Box } from "@chakra-ui/react";
 
 const Vinyl = (): ReactElement => {
   return (
-    <Box>
+    <Box className="record-player">
       {/* Platter & record */}
-      <Box className="platter" />
       <Box className="record-outer" />
       <Box className="record-inner" />
       <Box className="record-image" />
@@ -15,8 +14,6 @@ const Vinyl = (): ReactElement => {
 
       {/* Tone arm */}
       <Box className="arm-base" />
-      <Box className="weight-arm" />
-      <Box className="weight" />
       <Box className="tone-arm" />
       <Box className="pivot-base" />
       <Box className="pivot-mech" />
