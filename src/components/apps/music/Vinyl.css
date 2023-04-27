@@ -49,7 +49,7 @@
 }
 
 .vinyl-spin {
-  animation: 5s linear spin infinite;
+  animation: 3s linear spin infinite;
 }
 
 .vinyl-paused {

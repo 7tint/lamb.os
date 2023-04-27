@@ -14,15 +14,12 @@ const Vinyl = ({ cover, isPlaying }: VinylProps): ReactElement => {
   const isNew = useRef<boolean>(true);
 
   useEffect(() => {
-    console.log("1");
-    console.log(isNew.current + " " + isPlaying);
     if (!isPlaying) {
       vinylRef.current?.classList.add("vinyl-paused");
     } else {
       vinylRef.current?.classList.remove("vinyl-paused");
       if (isNew.current) {
         isNew.current = false;
-        console.log(isNew.current);
       }
       vinylRef.current?.classList.add("vinyl-spin");
     }
