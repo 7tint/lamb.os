@@ -19,6 +19,7 @@ type SongInfo = {
   song: string;
   artist: string;
   album: string;
+  cover: string;
 };
 
 const Music = ({ theme }: MusicProps): ReactElement => {

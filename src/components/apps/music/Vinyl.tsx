@@ -5,19 +5,10 @@ import { Box } from "@chakra-ui/react";
 
 const Vinyl = (): ReactElement => {
   return (
-    <Box className="record-player">
+    <Box className="album">
       {/* Platter & record */}
-      <Box className="record-outer" />
-      <Box className="record-inner" />
-      <Box className="record-image" />
-      <Box className="record-ring" />
-
-      {/* Tone arm */}
-      <Box className="arm-base" />
-      <Box className="tone-arm" />
-      <Box className="pivot-base" />
-      <Box className="pivot-mech" />
-      <Box className="headshell" />
+      <Box className="cover" />
+      <Box className="vinyl" />
     </Box>
   );
 };
