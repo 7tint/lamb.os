@@ -34,6 +34,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
 
   useEffect(() => {
     audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
+    audioRef.current.load();
     setIsPlaying(true);
     const currentAudioRef = audioRef.current;
     return () => {
