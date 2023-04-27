@@ -44,6 +44,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
     setPlaylistId(theme);
     (async () => {
       const res = await getApi(`/playlists/${theme}`);
+      console.log(res);
       setSongs(res as SongInfo[]);
     })();
   }, [theme]);
@@ -113,7 +114,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
         {isPlaying ? "Pause" : "Play"}
       </Button>
       <Button onClick={nextTrack}>Next</Button> */}
-      <Vinyl />
+      <Vinyl cover={songs.length > 0 ? songs[songId].cover : undefined} />
     </Box>
   );
 };
