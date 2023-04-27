@@ -1,12 +1,12 @@
 .album {
-  position: absolute;
-  top: 50px;
-  left: 50px;
+  position: relative;
+  top: 25px;
+  left: 30px;
   height: 150px;
   width: 150px;
 }
 
-.cover {
+.cover-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,6 +20,10 @@
     inset 0 0 4px 2px rgba(50, 50, 50, 0.1);
 }
 
+.cover-image {
+  image-rendering: pixelated;
+}
+
 .vinyl {
   position: absolute;
   top: 2.5%;
@@ -29,15 +33,38 @@
   height: 95%;
   display: block;
   background-image: url("/public/assets/vinyl.png");
-  background-size: 106% 106%;
+  background-size: 100% 100%;
   background-position: center;
   box-shadow: 4px 0 16px 0 rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  animation: 5s linear spinThat infinite, 1s ease-out getOut 1s forwards;
+  transition: left 1s ease-in-out;
 }
 
-@keyframes getOut {
+.vinyl-out {
+  left: 60%;
+}
+
+.vinyl-in {
+  left: 0%;
+}
+
+.vinyl-spin {
+  animation: 5s linear spin infinite;
+}
+
+.vinyl-paused {
+  animation-play-state: paused;
+}
+
+.vinyl-refresh {
+  animation: 1s ease-in-out refresh 1s forwards, 5s linear spin infinite;
+}
+
+@keyframes refresh {
   0% {
+    left: 60%;
+  }
+  50% {
     left: 0;
   }
   100% {
@@ -45,7 +72,7 @@
   }
 }
 
-@keyframes spinThat {
+@keyframes spin {
   0% {
     transform: rotate(0deg);
   }

@@ -5,10 +5,10 @@ export enum Themes {
 
 export const ThemeStyles = {
   [Themes.Default]: {
-    background: "teal.100",
-    outline: "teal.900",
-    player: "red.300",
-    text: "gray.100",
     app: "red.100",
+    background: "teal.100",
+    grey: "gray.50",
+    outline: "teal.900",
+    text: "gray.100",
   },
 };

@@ -55,7 +55,6 @@ const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
   }
 };
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 const AppModal = ({
   name,
   position,

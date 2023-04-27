@@ -1,0 +1,7 @@
+.playlist-sidemenu {
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+.playlist-item {
+  cursor: pointer;
+}
