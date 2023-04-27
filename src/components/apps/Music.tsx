@@ -99,7 +99,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
         />
         <Flex
           width="220px"
-          marginTop={"45px"}
+          marginTop={"40px"}
           marginX={6}
           direction="column"
           alignItems="center"
