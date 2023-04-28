@@ -45,7 +45,7 @@
 }
 
 .vinyl-in {
-  left: 0%;
+  left: 14px;
 }
 
 .vinyl-spin {
@@ -54,22 +54,6 @@
 
 .vinyl-paused {
   animation-play-state: paused;
-}
-
-.vinyl-refresh {
-  animation: 1s ease-in-out refresh 1s forwards, 5s linear spin infinite;
-}
-
-@keyframes refresh {
-  0% {
-    left: 60%;
-  }
-  50% {
-    left: 0;
-  }
-  100% {
-    left: 60%;
-  }
 }
 
 @keyframes spin {
