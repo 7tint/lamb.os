@@ -9,17 +9,18 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 import Draggable from "react-draggable";
-import "./Application.css";
 
+import About from "components/apps/About";
 import Calendar from "components/apps/Calendar";
 import Computer from "components/apps/Computer";
 import Messages from "components/apps/Messages";
-import Music from "components/apps/Music";
-import Portfolio from "components/apps/Portfolio";
+import Music from "components/apps/music/Music";
+import Photos from "components/apps/Photos";
 import Trash from "components/apps/Trash";
 import { Themes, ThemeStyles } from "types";
 
 import { IconType } from "./Icon";
+import "./Application.css";
 
 type AppContentProps = {
   type: IconType;
@@ -40,10 +41,12 @@ const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
   switch (type) {
     case IconType.Computer:
       return <Computer />;
-    case IconType.Portfolio:
-      return <Portfolio />;
+    case IconType.Photos:
+      return <Photos />;
     case IconType.Calendar:
       return <Calendar />;
+    case IconType.About:
+      return <About />;
     case IconType.Music:
       return <Music theme={theme} />;
     case IconType.Messages:

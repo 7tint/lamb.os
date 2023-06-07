@@ -21,9 +21,9 @@ export const Applications = [
   },
   {
     id: 1,
-    name: "Portfolio",
+    name: "Photos",
     img: "/assets/folder.png",
-    type: IconType.Portfolio,
+    type: IconType.Photos,
     position: { x: "30%", y: "45%" },
   },
   {
@@ -35,20 +35,27 @@ export const Applications = [
   },
   {
     id: 3,
+    name: "About",
+    img: "/assets/doc.png",
+    type: IconType.About,
+    position: { x: "35%", y: "10%" },
+  },
+  {
+    id: 4,
     name: "Music",
     img: "/assets/soundcloud.png",
     type: IconType.Music,
     position: { x: "45%", y: "50%" },
   },
   {
-    id: 4,
+    id: 5,
     name: "Messages",
     img: "/assets/message.png",
     type: IconType.Messages,
     position: { x: "34%", y: "5%" },
   },
   {
-    id: 5,
+    id: 6,
     name: "Trash",
     img: "/assets/trashcan.png",
     type: IconType.Trash,

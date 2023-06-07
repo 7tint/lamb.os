@@ -4,8 +4,9 @@ import { Flex, Image, Text, WrapItem } from "@chakra-ui/react";
 
 export enum IconType {
   Computer = "Computer",
-  Portfolio = "Portfolio",
+  Photos = "Photos",
   Calendar = "Calendar",
+  About = "About",
   Music = "Music",
   Messages = "Messages",
   Trash = "Trash",

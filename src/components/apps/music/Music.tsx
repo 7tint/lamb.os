@@ -7,7 +7,7 @@ import { getApi } from "api/common";
 import { ThemeStyles, Themes } from "types";
 import { SERVER_URL } from "utils/secrets";
 
-import Vinyl from "./music/Vinyl";
+import Vinyl from "./Vinyl";
 
 import "./Music.css";
 

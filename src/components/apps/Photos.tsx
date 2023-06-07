@@ -2,12 +2,12 @@ import React, { ReactElement } from "react";
 
 import { Box, Text } from "@chakra-ui/react";
 
-const Portfolio = (): ReactElement => {
+const Photos = (): ReactElement => {
   return (
     <Box>
-      <Text>Portfolio</Text>
+      <Text>Photos</Text>
     </Box>
   );
 };
 
-export default Portfolio;
+export default Photos;
