@@ -15,6 +15,13 @@ const App = (): ReactElement => {
     fonts: {
       body: "DisposableDroidBB",
     },
+    components: {
+      Heading: {
+        baseStyle: {
+          fontFamily: "AkkuratMono",
+        },
+      },
+    },
   });
 
   return (

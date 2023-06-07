@@ -33,7 +33,14 @@ const Fonts = (): ReactElement => (
         font-display: swap;
         src: url(./fonts/DisposableDroidBB/Disposable-Droid-BB-Bold-Italic.ttf) format("truetype");
       }
-      `}
+      @font-face {
+        font-family: "AkkuratMono";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(./fonts/AkkuratMono/AkkuratMono-Regular.ttf) format("truetype");
+      }
+    `}
   />
 );
 

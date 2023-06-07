@@ -4,12 +4,12 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 
 const About = (): ReactElement => {
   return (
-    <Box height="450px" width="700px" px={6} py={8} overflowY="scroll">
-      <Heading as="h1" size="2xl">
+    <Box height="450px" width="700px" px={6} pt={12} overflowY="scroll">
+      <Heading as="h1" size="xl">
         Lambert Liu
       </Heading>
-      <Box my={6}>
-        <Heading as="h2" size="lg">
+      <Box my={8}>
+        <Heading as="h3" size="md" mb={2}>
           Lorem ipsum
         </Heading>
         <Text>
@@ -20,8 +20,8 @@ const About = (): ReactElement => {
           nisl.
         </Text>
       </Box>
-      <Box my={6}>
-        <Heading as="h2" size="xl">
+      <Box my={8}>
+        <Heading as="h2" size="lg" mb={2}>
           Section
         </Heading>
         <Text>
@@ -32,8 +32,8 @@ const About = (): ReactElement => {
           nisl.
         </Text>
       </Box>
-      <Box my={6}>
-        <Heading as="h2" size="xl">
+      <Box my={8}>
+        <Heading as="h2" size="lg" mb={2}>
           Section
         </Heading>
         <Text>
