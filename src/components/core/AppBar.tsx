@@ -38,7 +38,7 @@ export const Applications = [
     name: "About",
     img: "/assets/doc.png",
     type: IconType.About,
-    position: { x: "35%", y: "10%" },
+    position: { x: "18%", y: "17%" },
   },
   {
     id: 4,
