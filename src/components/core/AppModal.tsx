@@ -81,10 +81,10 @@ const AppModal = ({
         position="absolute"
         left={position.x}
         top={position.y}
-        backgroundColor={ThemeStyles[theme].app}
         className="no-cursor"
         zIndex={zIndex}
         onClick={onSelect}
+        backgroundColor={ThemeStyles[theme].primary}
       >
         <Box
           border="1px solid black"
@@ -97,7 +97,7 @@ const AppModal = ({
             w="100%"
             minHeight="300px"
             minWidth="400px"
-            boxShadow="inset 2px 2px 2px rgba(255, 255, 255, .5), inset -2px -2px 2px rgba(0, 0, 0, .5)"
+            boxShadow="inset 2px 2px 2px rgba(255, 255, 255, .1), inset -2px -2px 2px rgba(0, 0, 0, .1)"
           >
             <Flex
               className="header cursor"
@@ -105,6 +105,8 @@ const AppModal = ({
               pt={1}
               flexDirection="row"
               alignItems="center"
+              borderBottom="1px solid black"
+              backgroundColor={ThemeStyles[theme].secondary}
             >
               <Text fontSize="sm" mx={1}>
                 {name}

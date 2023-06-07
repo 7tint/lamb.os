@@ -5,7 +5,8 @@ export enum Themes {
 
 export const ThemeStyles = {
   [Themes.Default]: {
-    app: "red.100",
+    primary: "red.50",
+    secondary: "red.100",
     background: "teal.100",
     grey: "gray.50",
     outline: "teal.900",
