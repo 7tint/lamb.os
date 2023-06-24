@@ -8,7 +8,7 @@ export const ThemeStyles = {
     primary: "red.50",
     secondary: "red.100",
     background: "teal.100",
-    grey: "gray.50",
+    gray: "gray.50",
     outline: "teal.900",
     text: "gray.100",
   },

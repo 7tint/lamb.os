@@ -174,9 +174,9 @@ const Music = ({ theme }: MusicProps): ReactElement => {
         className="playlist-sidemenu"
         direction="column"
         width="200px"
-        backgroundColor={ThemeStyles[theme].grey}
+        backgroundColor={ThemeStyles[theme].gray}
         border="1px solid"
-        borderColor="grey.800"
+        borderColor="gray.800"
         overflowY="scroll"
         margin={8}
         marginTop={3}
@@ -187,8 +187,8 @@ const Music = ({ theme }: MusicProps): ReactElement => {
           paddingX={1}
           paddingY={0.5}
           borderBottom="1px solid"
-          borderColor="grey.800"
-          background={ThemeStyles[theme].grey}
+          borderColor="gray.800"
+          background={ThemeStyles[theme].gray}
         >
           <Text
             fontWeight="700"

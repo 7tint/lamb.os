@@ -87,7 +87,8 @@ const AppModal = ({
         backgroundColor={ThemeStyles[theme].primary}
       >
         <Box
-          border="1px solid black"
+          border="1px solid"
+          borderColor="gray.600"
           minHeight="300px"
           minWidth="400px"
           shadow="lg"
@@ -105,7 +106,8 @@ const AppModal = ({
               pt={1}
               flexDirection="row"
               alignItems="center"
-              borderBottom="1px solid black"
+              borderBottom="1px solid"
+              borderColor="gray.600"
               backgroundColor={ThemeStyles[theme].secondary}
             >
               <Text fontSize="sm" mx={1}>

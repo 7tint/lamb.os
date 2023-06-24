@@ -44,7 +44,7 @@ const Icon = ({
         mb={1}
       />
       <Text
-        border={selected ? "0.5px dashed lightgrey" : "0.5px solid transparent"}
+        border={selected ? "0.5px dashed lightgray" : "0.5px solid transparent"}
         background={selected ? "rgba(0, 0, 0, 0.6)" : "transparent"}
         color={color}
         fontSize="md"
