@@ -4,7 +4,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 
 const About = (): ReactElement => {
   return (
-    <Box height="450px" width="700px" px={6} pt={12} overflowY="scroll">
+    <Box width="700px" height="450px" px={6} pt={12} overflowY="scroll">
       <Heading as="h1" size="xl">
         Lambert Liu
       </Heading>

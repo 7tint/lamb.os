@@ -13,7 +13,7 @@ import Draggable from "react-draggable";
 import About from "components/apps/About";
 import Calendar from "components/apps/Calendar";
 import Computer from "components/apps/Computer";
-import Messages from "components/apps/Messages";
+import Messages from "components/apps/messages/Messages";
 import Music from "components/apps/music/Music";
 import Photos from "components/apps/Photos";
 import Trash from "components/apps/Trash";
