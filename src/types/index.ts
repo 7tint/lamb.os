@@ -70,8 +70,8 @@ export type ThemeStyle = {
   primary: string;
   secondary: string;
   background: string;
-  gray: string;
   outline: string;
+  light: string;
   text: string;
 };
 
@@ -82,7 +82,7 @@ ThemeStyles.set(Themes.Default, {
   primary: "red.50",
   secondary: "red.100",
   background: "teal.100",
-  gray: "gray.50",
   outline: "teal.900",
+  light: "gray.50",
   text: "gray.100",
 });
