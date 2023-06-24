@@ -32,40 +32,52 @@ const Music = ({ theme }: MusicProps): ReactElement => {
   const [trackDuration, setTrackDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(new Audio());
 
-  useEffect(() => {
-    audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
-    audioRef.current.load();
-    setIsPlaying(true);
-    const currentAudioRef = audioRef.current;
-    return () => {
-      currentAudioRef.pause();
-    };
-  }, [playlistId, songId]);
+  useEffect(
+    function playMusic() {
+      audioRef.current.src = `${SERVER_URL}/songs/${playlistId}/${songId}`;
+      audioRef.current.load();
+      setIsPlaying(true);
+      const currentAudioRef = audioRef.current;
+      return () => {
+        currentAudioRef.pause();
+      };
+    },
+    [playlistId, songId]
+  );
 
-  useEffect(() => {
-    setPlaylistId(theme);
-    (async () => {
-      const res = await getApi(`/playlists/${theme}`);
-      setSongs(res as SongInfo[]);
-    })();
-  }, [theme]);
+  useEffect(
+    function getSongs() {
+      setPlaylistId(theme);
+      (async () => {
+        const res = await getApi(`/playlists/${theme}`);
+        setSongs(res as SongInfo[]);
+      })();
+    },
+    [theme]
+  );
 
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-  }, [isPlaying, songId]);
+  useEffect(
+    function playOrPause() {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    },
+    [isPlaying, songId]
+  );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTrackProgress(audioRef.current.currentTime);
-    }, 500);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [trackDuration]);
+  useEffect(
+    function updateTrackProgress() {
+      const interval = setInterval(() => {
+        setTrackProgress(audioRef.current.currentTime);
+      }, 500);
+      return () => {
+        clearInterval(interval);
+      };
+    },
+    [trackDuration]
+  );
 
   const prevTrack = () => {
     if (audioRef.current.currentTime > 3) {
