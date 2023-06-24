@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { ReactElement, useRef, useEffect } from "react";
 import "./Vinyl.css";
 
