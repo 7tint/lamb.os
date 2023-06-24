@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef } from "react";
+import React, { ReactElement, useContext, useRef } from "react";
 
 import {
   Box,
@@ -17,27 +17,24 @@ import Messages from "components/apps/messages/Messages";
 import Music from "components/apps/music/Music";
 import Photos from "components/apps/Photos";
 import Trash from "components/apps/Trash";
-import { Themes, ThemeStyles } from "types";
-
-import { IconType } from "./Icon";
+import { ThemeContext } from "shared/App";
+import { IconType } from "types";
 import "./Application.css";
 
 type AppContentProps = {
   type: IconType;
-  theme: Themes;
 };
 
 type AppModalProps = {
   name: string;
   position: { x: string; y: string };
-  theme: Themes;
   type: IconType;
   zIndex: number;
   onSelect: () => void;
   onModalClose: () => void;
 };
 
-const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
+const AppContent = ({ type }: AppContentProps): ReactElement => {
   switch (type) {
     case IconType.Computer:
       return <Computer />;
@@ -48,7 +45,7 @@ const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
     case IconType.About:
       return <About />;
     case IconType.Music:
-      return <Music theme={theme} />;
+      return <Music />;
     case IconType.Messages:
       return <Messages />;
     case IconType.Trash:
@@ -61,12 +58,12 @@ const AppContent = ({ type, theme }: AppContentProps): ReactElement => {
 const AppModal = ({
   name,
   position,
-  theme,
   type,
   zIndex,
   onSelect,
   onModalClose,
 }: AppModalProps): ReactElement => {
+  const theme = useContext(ThemeContext);
   const nodeRef = useRef(null);
 
   return (
@@ -84,7 +81,7 @@ const AppModal = ({
         className="no-cursor"
         zIndex={zIndex}
         onClick={onSelect}
-        backgroundColor={ThemeStyles[theme].primary}
+        backgroundColor={theme.primary}
       >
         <Box
           border="1px solid"
@@ -108,7 +105,7 @@ const AppModal = ({
               alignItems="center"
               borderBottom="1px solid"
               borderColor="gray.600"
-              backgroundColor={ThemeStyles[theme].secondary}
+              backgroundColor={theme.secondary}
             >
               <Text fontSize="sm" mx={1}>
                 {name}
@@ -138,7 +135,7 @@ const AppModal = ({
                 x
               </Button>
             </Flex>
-            <AppContent type={type} theme={theme} />
+            <AppContent type={type} />
           </Box>
         </Box>
       </Box>

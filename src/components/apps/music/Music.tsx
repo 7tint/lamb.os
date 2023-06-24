@@ -1,19 +1,20 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, {
+  ReactElement,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { Flex, Box, IconButton, Text, Image } from "@chakra-ui/react";
 import moment from "moment";
 
 import { getApi } from "api/common";
-import { ThemeStyles, Themes } from "types";
+import { ThemeContext } from "shared/App";
 import { SERVER_URL } from "utils/secrets";
 
 import Vinyl from "./Vinyl";
-
 import "./Music.css";
-
-type MusicProps = {
-  theme: Themes;
-};
 
 type SongInfo = {
   id: number;
@@ -23,9 +24,10 @@ type SongInfo = {
   cover: string;
 };
 
-const Music = ({ theme }: MusicProps): ReactElement => {
+const Music = (): ReactElement => {
+  const theme = useContext(ThemeContext);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [playlistId, setPlaylistId] = useState<number>(theme);
+  const [playlistId, setPlaylistId] = useState<number>(theme.id);
   const [songId, setSongId] = useState<number>(0);
   const [songs, setSongs] = useState<SongInfo[]>([]);
   const [trackProgress, setTrackProgress] = useState(0);
@@ -47,9 +49,9 @@ const Music = ({ theme }: MusicProps): ReactElement => {
 
   useEffect(
     function getSongs() {
-      setPlaylistId(theme);
+      setPlaylistId(theme.id);
       (async () => {
-        const res = await getApi(`/playlists/${theme}`);
+        const res = await getApi(`/playlists/${theme.id}`);
         setSongs(res as SongInfo[]);
       })();
     },
@@ -186,7 +188,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
         className="playlist-sidemenu"
         direction="column"
         width="200px"
-        backgroundColor={ThemeStyles[theme].gray}
+        backgroundColor={theme.gray}
         border="1px solid"
         borderColor="gray.800"
         overflowY="scroll"
@@ -200,7 +202,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
           paddingY={0.5}
           borderBottom="1px solid"
           borderColor="gray.800"
-          background={ThemeStyles[theme].gray}
+          background={theme.gray}
         >
           <Text
             fontWeight="700"
@@ -215,9 +217,7 @@ const Music = ({ theme }: MusicProps): ReactElement => {
           <Flex
             key={song.id}
             className="playlist-item"
-            background={
-              songId === index ? ThemeStyles[theme].background : "transparent"
-            }
+            background={songId === index ? theme.background : "transparent"}
             paddingX={1}
             paddingY={0.5}
           >

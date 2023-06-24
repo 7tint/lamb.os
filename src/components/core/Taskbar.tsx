@@ -1,15 +1,12 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import moment, { Moment } from "moment";
 
-import { Themes, ThemeStyles } from "types";
+import { ThemeContext } from "shared/App";
 
-type TaskbarProps = {
-  theme: Themes;
-};
-
-const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
+const Taskbar = (): ReactElement => {
+  const theme = useContext(ThemeContext);
   const [time, setTime] = useState<Moment>(moment());
 
   useEffect(() => {
@@ -27,17 +24,17 @@ const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
       bottom="0"
       h="30px"
       w="100%"
-      backgroundColor={ThemeStyles[theme].background}
-      borderColor={ThemeStyles[theme].outline}
+      backgroundColor={theme.background}
+      borderColor={theme.outline}
       borderTop="1px solid"
-      color={ThemeStyles[theme].outline}
+      color={theme.outline}
       fontWeight="700"
       fontSize={["lg", "xl"]}
     >
       <Flex>
         <Flex
           px={[2, 3]}
-          borderColor={ThemeStyles[theme].outline}
+          borderColor={theme.outline}
           borderRight="1px solid"
           fontStyle="italic"
         >
@@ -47,7 +44,7 @@ const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
         <Spacer />
         <Text
           px={[2, 3]}
-          borderColor={ThemeStyles[theme].outline}
+          borderColor={theme.outline}
           borderLeft="1px solid"
           fontStyle="italic"
         >
@@ -55,7 +52,7 @@ const Taskbar = ({ theme }: TaskbarProps): ReactElement => {
         </Text>
         <Text
           px={[2, 3]}
-          borderColor={ThemeStyles[theme].outline}
+          borderColor={theme.outline}
           borderLeft="1px solid"
           fontStyle="italic"
         >

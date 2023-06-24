@@ -2,16 +2,6 @@ import React, { ReactElement } from "react";
 
 import { Flex, Image, Text, WrapItem } from "@chakra-ui/react";
 
-export enum IconType {
-  Computer = "Computer",
-  Photos = "Photos",
-  Calendar = "Calendar",
-  About = "About",
-  Music = "Music",
-  Messages = "Messages",
-  Trash = "Trash",
-}
-
 type IconProps = {
   img: string;
   text: string;
