@@ -6,7 +6,7 @@ import Button from "components/common/Button";
 
 const NewComment = (): ReactElement => {
   return (
-    <Flex width="100%" mx={2} align="center">
+    <Flex width="100%" align="center">
       <Box flex={1} mr={2}>
         <Input
           variant="unstyled"
